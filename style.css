@@ -1,237 +1,203 @@
-/* General Styles */
-:root {
-    --primary-color: #28a745; /* A shade of green */
-    --secondary-color: #007bff; /* A shade of blue */
-    --dark-bg: #1a1a1a;
-    --light-bg: #f4f4f4;
-    --text-color: #333;
-    --light-text-color: #f4f4f4;
-}
-
+/* General Styling */
 body {
     font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
+    color: #fff;
+    background-color: #000;
     margin: 0;
-    padding: 0;
-    background-color: var(--light-bg);
-    color: var(--text-color);
+    line-height: 1.6;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
+    margin: 0 auto;
     padding: 20px 0;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-h1 { font-size: 2.8em; }
-h2 { font-size: 2.2em; }
-h3 { font-size: 1.8em; }
-h4 { font-size: 1.4em; }
-
-p {
-    margin-bottom: 15px;
-}
-
-a {
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.btn {
-    display: inline-block;
-    background: var(--primary-color);
-    color: var(--light-text-color);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background: #218838; /* Darker green on hover */
-    text-decoration: none;
-}
-
-.alt-bg {
-    background-color: var(--dark-bg);
-    color: var(--light-text-color);
-}
-
-.alt-bg h3, .alt-bg h4 {
-    color: var(--light-text-color);
-}
-
-
-/* Header & Navigation */
+/* Header */
 header {
-    background: var(--dark-bg);
-    color: var(--light-text-color);
-    padding: 1rem 0;
-    border-bottom: var(--primary-color) 3px solid;
+    background-color: #111;
+    padding: 20px 0;
+    border-bottom: 2px solid #0f0;
 }
 
-header h1 {
-    float: left;
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    /* Hide the text visually but keep it for screen readers */
+    text-indent: -9999px;
+    overflow: hidden;
+    background-image: url('GreenField Infinite_logo.png'); /* The logo image you created */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain; /* Adjust as needed */
+    height: 60px; /* Match the height of your logo */
+    width: 300px; /* Match the width of your logo */
     margin: 0;
-    color: var(--light-text-color); /* Override for header */
 }
 
-header nav {
-    float: right;
-    margin-top: 10px;
-}
-
-header ul {
+header nav ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
+    display: flex;
 }
 
-header li {
-    display: inline;
-    padding: 0 15px;
+header nav ul li {
+    margin-left: 20px;
 }
 
-header a {
-    color: var(--light-text-color);
+header nav a {
+    color: #fff;
     text-decoration: none;
-    text-transform: uppercase;
     font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s;
 }
 
-header a:hover {
-    color: var(--primary-color);
-    text-decoration: none;
+header nav a:hover {
+    color: #0f0;
 }
 
 /* Hero Section */
 #hero {
-    min-height: 600px; /* Adjust as needed */
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('My Game Poster (GreenField Infinite).png') no-repeat center center/cover; /* Use your poster image */
-    color: var(--light-text-color);
-    position: relative;
-    padding: 50px 0;
+    padding: 80px 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') no-repeat center center/cover; /* Add a background image for more visual impact */
 }
 
-#hero .container {
-    position: relative;
-    z-index: 1; /* Ensure content is above overlay */
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Add a glowing effect */
 }
 
 #hero h2 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: var(--light-text-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: #0f0;
+    margin-top: 20px;
 }
 
 #hero p {
     font-size: 1.2em;
-    margin-bottom: 30px;
+    max-width: 600px;
+    margin: 10px auto 30px;
 }
 
-.hero-image {
-    display: none; /* Hide the poster here as it's used as background */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #0f0;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #fff;
 }
 
 /* Sections */
-section {
-    padding: 60px 0;
-    text-align: center;
+.alt-bg {
+    background-color: #1a1a1a;
 }
 
 section h3 {
-    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    color: #0f0;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #0f0;
+    display: inline-block;
+    padding-bottom: 10px;
 }
 
-/* Features Grid */
+/* Features */
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    margin-top: 30px;
+    text-align: center;
 }
 
 .feature-item {
-    background: #fff;
+    background-color: #111;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: left;
+    border-radius: 10px;
+    border: 1px solid #0f0;
+    transition: transform 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.feature-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
 }
 
 .feature-item h4 {
-    color: var(--secondary-color);
-    margin-top: 0;
+    color: #fff;
+    margin: 0;
 }
 
-/* Media Placeholder */
-.media-placeholder {
-    background-color: #ccc;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    color: #555;
-    font-style: italic;
-    margin-top: 20px;
+/* Media Gallery */
+.media-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.media-gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.media-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Contact */
+#contact {
+    text-align: center;
 }
 
 /* Footer */
 footer {
-    background: var(--dark-bg);
-    color: var(--light-text-color);
+    background-color: #111;
     text-align: center;
     padding: 20px 0;
+    border-top: 2px solid #0f0;
 }
 
-/* Responsiveness */
+footer p {
+    margin: 0;
+    color: #aaa;
+}
+
+/* Optional: Mobile Responsiveness */
 @media (max-width: 768px) {
-    header h1, header nav {
-        float: none;
-        text-align: center;
+    header .container {
+        flex-direction: column;
     }
-
     header nav ul {
-        padding-top: 15px;
+        margin-top: 20px;
     }
-
-    header li {
-        display: block;
-        padding: 10px 0;
+    header nav ul li {
+        margin: 0 10px;
     }
-
-    #hero h2 {
-        font-size: 2em;
-    }
-
-    #hero p {
-        font-size: 1em;
-    }
-
-    .feature-item {
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.8em; }
-    h3 { font-size: 1.5em; }
 }
