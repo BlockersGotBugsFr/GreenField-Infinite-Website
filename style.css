@@ -2,7 +2,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: #fff;
-    background-color: #000;
+    background-color: #000; /* Main background color */
     margin: 0;
     line-height: 1.6;
 }
@@ -16,7 +16,6 @@ body {
 
 /* Header */
 header {
-    background-color: #111;
     padding: 20px 0;
     border-bottom: 2px solid #0f0;
 }
@@ -63,46 +62,73 @@ header nav a:hover {
     color: #0f0;
 }
 
-/* Hero Section */
+/* Hero Section with Faded Background */
 #hero {
+    position: relative; /* Position the hero section to contain the background and overlay */
     text-align: center;
-    padding: 80px 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') no-repeat center center/cover; /* Add a background image for more visual impact */
+    padding: 100px 0; /* Increase padding for a more luxurious feel */
+    min-height: 50vh; /* Make sure the hero section is at least half the viewport height */
+    overflow: hidden; /* Prevent background image from overflowing */
+}
+
+/* Pseudo-element for the fading background effect */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('My Game Poster (GreenField Infinite).png'), 
+                      linear-gradient(to bottom, transparent 0%, #0f0 80%); /* */
+    background-size: cover, auto; /* Cover image, auto for gradient */
+    background-position: center top, bottom; /* Center the image, position gradient at bottom */
+    z-index: -1; /* Place the background behind the content */
+    opacity: 0.5; /* Adjust opacity for the faded look */
+}
+
+/* Ensure the content is visible and readable */
+#hero .container {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-image {
-    max-width: 100%;
+    max-width: 80%; /* Adjust size to show the faded version */
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Add a glowing effect */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    display: none; /* Hide the original hero image since we're using it in the background */
 }
 
 #hero h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5em;
-    color: #0f0;
+    font-size: 3em;
+    color: #fff; /* Use white for better contrast */
     margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for readability */
 }
 
 #hero p {
-    font-size: 1.2em;
-    max-width: 600px;
-    margin: 10px auto 30px;
+    font-size: 1.5em; /* Make font size larger */
+    max-width: 800px; /* Increase max-width for better flow */
+    margin: 10px auto 40px;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 15px 30px; /* Increase padding for a bolder button */
     background-color: #0f0;
     color: #000;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: 8px; /* Slightly rounder buttons */
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
     background-color: #fff;
+    transform: translateY(-5px); /* Add a subtle hover effect */
 }
 
 /* Sections */
@@ -113,19 +139,29 @@ header nav a:hover {
 section h3 {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #0f0;
     margin-bottom: 40px;
-    border-bottom: 2px solid #0f0;
-    display: inline-block;
     padding-bottom: 10px;
+    position: relative;
+}
+
+section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #0f0;
 }
 
 /* Features */
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 40px;
     text-align: center;
 }
 
@@ -134,22 +170,26 @@ section h3 {
     padding: 30px;
     border-radius: 10px;
     border: 1px solid #0f0;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature-item:hover {
     transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
 }
 
 .feature-img {
     max-width: 100%;
     height: auto;
     margin-bottom: 15px;
+    border-radius: 8px;
 }
 
 .feature-item h4 {
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
     margin: 0;
+    font-size: 1.2em;
 }
 
 /* Media Gallery */
@@ -199,5 +239,8 @@ footer p {
     }
     header nav ul li {
         margin: 0 10px;
+    }
+    #hero::before {
+        background-position: center 30%; /* Adjust background position for smaller screens */
     }
 }
