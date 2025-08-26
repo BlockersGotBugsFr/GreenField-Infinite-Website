@@ -2,7 +2,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: #fff;
-    background-color: #000; /* Main background color */
+    background-color: #000;
     margin: 0;
     line-height: 1.6;
 }
@@ -17,7 +17,7 @@ body {
 /* Header */
 header {
     padding: 20px 0;
-    border-bottom: 2px solid #0f0;
+    border-bottom: 2px solid #4CBB17; /* Refined green border */
 }
 
 header .container {
@@ -30,12 +30,12 @@ header .container {
     /* Hide the text visually but keep it for screen readers */
     text-indent: -9999px;
     overflow: hidden;
-    background-image: url('GreenField Infinite_logo.png'); /* The logo image you created */
+    background-image: url('GreenField Infinite_logo.png');
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: contain; /* Adjust as needed */
-    height: 60px; /* Match the height of your logo */
-    width: 300px; /* Match the width of your logo */
+    background-size: contain;
+    height: 60px;
+    width: 300px;
     margin: 0;
 }
 
@@ -59,16 +59,19 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #0f0;
+    color: #4CBB17;
 }
 
 /* Hero Section with Faded Background */
 #hero {
-    position: relative; /* Position the hero section to contain the background and overlay */
+    position: relative;
     text-align: center;
-    padding: 100px 0; /* Increase padding for a more luxurious feel */
-    min-height: 50vh; /* Make sure the hero section is at least half the viewport height */
-    overflow: hidden; /* Prevent background image from overflowing */
+    padding: 100px 0;
+    min-height: 50vh;
+    overflow: hidden;
+    color: #fff;
+    /* Ensure content is positioned above the background overlay */
+    z-index: 1;
 }
 
 /* Pseudo-element for the fading background effect */
@@ -79,56 +82,54 @@ header nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('My Game Poster (GreenField Infinite).png'), 
-                      linear-gradient(to bottom, transparent 0%, #0f0 80%); /* */
-    background-size: cover, auto; /* Cover image, auto for gradient */
-    background-position: center top, bottom; /* Center the image, position gradient at bottom */
+    /* Use rgba for a smoother, less stark fade */
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(76,187,23,0.7)), 
+                      url('My Game Poster (GreenField Infinite).png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
     z-index: -1; /* Place the background behind the content */
-    opacity: 0.5; /* Adjust opacity for the faded look */
 }
 
-/* Ensure the content is visible and readable */
+/* Content over the hero background */
 #hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-image {
-    max-width: 80%; /* Adjust size to show the faded version */
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-    display: none; /* Hide the original hero image since we're using it in the background */
+    display: none; /* Hide the original hero image */
 }
 
 #hero h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 3em;
-    color: #fff; /* Use white for better contrast */
+    color: #fff;
     margin-top: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for readability */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 #hero p {
-    font-size: 1.5em; /* Make font size larger */
-    max-width: 800px; /* Increase max-width for better flow */
+    font-size: 1.5em;
+    max-width: 800px;
     margin: 10px auto 40px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .btn {
     display: inline-block;
-    padding: 15px 30px; /* Increase padding for a bolder button */
-    background-color: #0f0;
+    padding: 15px 30px;
+    background-color: #4CBB17; /* Refined green button */
     color: #000;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 8px; /* Slightly rounder buttons */
+    border-radius: 8px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
     background-color: #fff;
-    transform: translateY(-5px); /* Add a subtle hover effect */
+    transform: translateY(-5px);
 }
 
 /* Sections */
@@ -140,7 +141,7 @@ section h3 {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5em;
-    color: #0f0;
+    color: #4CBB17; /* Refined green heading */
     margin-bottom: 40px;
     padding-bottom: 10px;
     position: relative;
@@ -154,7 +155,7 @@ section h3::after {
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background-color: #0f0;
+    background-color: #4CBB17;
 }
 
 /* Features */
@@ -169,13 +170,13 @@ section h3::after {
     background-color: #111;
     padding: 30px;
     border-radius: 10px;
-    border: 1px solid #0f0;
+    border: 1px solid #4CBB17;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(76, 187, 23, 0.2);
 }
 
 .feature-img {
@@ -197,13 +198,14 @@ section h3::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    justify-items: center; /* Center images horizontally */
 }
 
 .media-gallery img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 10px rgba(76, 187, 23, 0.3);
     transition: transform 0.3s;
 }
 
@@ -221,7 +223,7 @@ footer {
     background-color: #111;
     text-align: center;
     padding: 20px 0;
-    border-top: 2px solid #0f0;
+    border-top: 2px solid #4CBB17;
 }
 
 footer p {
@@ -241,6 +243,6 @@ footer p {
         margin: 0 10px;
     }
     #hero::before {
-        background-position: center 30%; /* Adjust background position for smaller screens */
+        background-position: center 30%;
     }
 }
