@@ -10,7 +10,7 @@
         body {
             font-family: 'Open Sans', sans-serif;
             color: #fff;
-            background-color: #000;
+            background-color: #0D0D0D; /* Deep charcoal background */
             margin: 0;
             line-height: 1.6;
         }
@@ -22,12 +22,13 @@
             padding: 20px 0;
         }
 
-        /* Unique Header */
+        /* Header */
         header {
             padding: 20px 0;
             border-bottom: 2px solid #4CBB17;
             position: relative;
             z-index: 10;
+            background-color: rgba(13, 13, 13, 0.9); /* Semi-transparent header */
         }
 
         header .container {
@@ -39,8 +40,8 @@
         .logo-text {
             text-indent: -9999px;
             overflow: hidden;
-            /* Replace with the RAW URL of your logo */
-            background-image: url('My Game Poster(GreenField Infinite).png'); 
+            /* ** REPLACE WITH YOUR RAW LOGO URL ** */
+            background-image: url('RAW_URL_OF_YOUR_LOGO.png'); 
             background-repeat: no-repeat;
             background-position: left center;
             background-size: contain;
@@ -72,18 +73,18 @@
             color: #4CBB17;
         }
 
-        /* Unique Hero Section */
+        /* Unique Hero Section with Parallax Effect */
         #hero {
             position: relative;
             text-align: center;
-            padding: 100px 0;
-            min-height: 50vh;
+            min-height: 60vh; /* Taller hero section */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
             color: #fff;
-            z-index: 1;
         }
-
-        /* --- GLITCH EFFECT --- */
+        
         #hero::before {
             content: '';
             position: absolute;
@@ -91,41 +92,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(76,187,23,0.7)), 
-                              /* Replace with the RAW URL of your poster */
-                              url('My Game Poster(GreenField Infinite).png');
+            background-image: linear-gradient(to bottom, rgba(13,13,13,0.5), rgba(13,13,13,1) 80%),
+                              /* ** REPLACE WITH YOUR RAW POSTER URL ** */
+                              url('RAW_URL_OF_YOUR_POSTER.png');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
             z-index: -1;
-            animation: glitch 1s infinite alternate;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-5px, 5px); }
-            40% { transform: translate(-5px, -5px); }
-            60% { transform: translate(5px, 5px); }
-            80% { transform: translate(5px, -5px); }
-            100% { transform: translate(0); }
-        }
-
-        /* --- PARTICLE EFFECT (Interactive) --- */
-        #hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(76, 187, 23, 0.2) 0%, rgba(76, 187, 23, 0) 100%);
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-
-        #hero:hover::after {
-            opacity: 0.8;
+            /* Parallax effect on scroll */
+            background-attachment: fixed;
+            transform: scale(1.1);
         }
 
         #hero .container {
@@ -139,7 +115,7 @@
 
         #hero h2 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3em;
+            font-size: 3.5em; /* Larger, bolder heading */
             color: #fff;
             margin-top: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
@@ -166,13 +142,18 @@
         }
 
         .btn:hover {
-            background-color: #fff;
+            background-color: #00FFFF; /* Teal on hover */
             transform: translateY(-5px);
         }
 
         /* Sections */
         .alt-bg {
             background-color: #1a1a1a;
+        }
+        
+        section {
+            padding: 80px 0;
+            margin-bottom: 40px; /* Consistent spacing */
         }
 
         section h3 {
@@ -301,7 +282,7 @@
     <main>
         <section id="hero">
             <div class="container">
-                <img src="My Game Poster(GreenField Infinite).png" alt="GreenField Infinite Game Poster" class="hero-image">
+                <img src="https://raw.githubusercontent.com/username/repo/main/My%20Game%20Poster(GreenField%20Infinite).png" alt="GreenField Infinite Game Poster" class="hero-image">
                 <h2>Explore the Vastness of GreenField Infinite</h2>
                 <p>An immersive journey awaits in a world brimming with adventure and mystery.</p>
                 <a href="#features" class="btn">Discover More</a>
@@ -321,17 +302,17 @@
                 <div class="feature-grid">
                     <div class="feature-item">
                         <!-- Replace with the RAW URL of your controls image -->
-                        <img src="My Game Poster(GreenField Infinite).png" alt="WASD to move, click to shoot" class="feature-img">
+                        <img src="RAW_URL_OF_YOUR_CONTROLS_IMAGE.png" alt="WASD to move, click to shoot" class="feature-img">
                         <h4>Instructions</h4>
                     </div>
                     <div class="feature-item">
                         <!-- Replace with the RAW URL of your enemies image -->
-                        <img src="My Game Poster(GreenField Infinite).png" alt="Five enemy types: zombie, tank, speedy, ghost, and leech" class="feature-img">
+                        <img src="RAW_URL_OF_YOUR_ENEMIES_IMAGE.png" alt="Five enemy types: zombie, tank, speedy, ghost, and leech" class="feature-img">
                         <h4>Enemies</h4>
                     </div>
                     <div class="feature-item">
                         <!-- Replace with the RAW URL of your dev image -->
-                        <img src="My Game Poster(GreenField Infinite).png" alt="Developer profile picture for ToonyTime" class="feature-img">
+                        <img src="RAW_URL_OF_YOUR_DEV_IMAGE.png" alt="Developer profile picture for ToonyTime" class="feature-img">
                         <h4>About the Dev</h4>
                     </div>
                 </div>
@@ -343,9 +324,9 @@
                 <h3>Media Gallery</h3>
                 <div class="media-gallery">
                     <!-- Replace with the RAW URLs of your gallery images -->
-                    <img src="My Game Poster(GreenField Infinite).png" alt="Gameplay screenshot 1">
-                    <img src="My Game Poster(GreenField Infinite).png" alt="Gameplay screenshot 2">
-                    <img src="My Game Poster(GreenField Infinite).png" alt="Concept art screenshot 3">
+                    <img src="RAW_URL_OF_YOUR_GALLERY_IMAGE_1.png" alt="Gameplay screenshot 1">
+                    <img src="RAW_URL_OF_YOUR_GALLERY_IMAGE_2.png" alt="Gameplay screenshot 2">
+                    <img src="RAW_URL_OF_YOUR_GALLERY_IMAGE_3.png" alt="Concept art screenshot 3">
                 </div>
             </div>
         </section>
@@ -364,14 +345,5 @@
             <p>&copy; 2025 GreenField Infinite. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-        document.addEventListener('mousemove', function(e) {
-            const hero = document.getElementById('hero');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            hero.style.setProperty('--x', `${x * 100}%`);
-            hero.style.setProperty('--y', `${y * 100}%`);
-        });
-    </script>
 </body>
 </html>
