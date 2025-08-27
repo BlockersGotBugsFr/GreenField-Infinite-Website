@@ -1,84 +1,177 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Game Website</title>
+  <title>Your Game Title</title>
   <style>
+    :root {
+      --bg-color: #0d0d10;
+      --card-bg-color: #1a1a20;
+      --border-color: #333;
+      --text-color: #eee;
+      --highlight-color: #6a1b9a;
+      --secondary-color: #9c27b0;
+    }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #eee;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
     }
     header {
       position: sticky;
       top: 0;
-      background: #222;
+      background: rgba(13, 13, 16, 0.95);
+      backdrop-filter: blur(5px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      border-bottom: 1px solid #333;
+      padding: 15px 30px;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    header h1 { margin: 0; font-size: 20px; }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1.5px;
+      color: var(--highlight-color);
+    }
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
-      color: #ccc;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
     }
-    nav a.active, nav a:hover { color: #fff; }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background-color: var(--secondary-color);
+      transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    }
+    nav a.active::after, nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
     section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 60px 20px;
+      max-width: 1200px;
       margin: auto;
+      text-align: center;
     }
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 40px;
       align-items: center;
+      text-align: left;
+      padding: 80px 0;
     }
     .hero img {
       width: 100%;
-      border-radius: 10px;
-      background: #333;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .hero img:hover { transform: scale(1.02); }
+    .hero h2 {
+      font-size: 48px;
+      color: var(--text-color);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    .hero .buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
-    .gallery div {
-      background: #333;
+    .gallery img {
+      width: 100%;
       aspect-ratio: 16 / 9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      object-fit: cover;
       border-radius: 8px;
-      color: #777;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
-    .cards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+    }
+    .cards {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
     .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #333;
+      background: var(--card-bg-color);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.6);
+    }
+    .card h3 {
+      font-size: 24px;
+      color: var(--secondary-color);
     }
     footer {
       text-align: center;
-      padding: 20px;
-      border-top: 1px solid #333;
+      padding: 30px;
+      border-top: 1px solid var(--border-color);
       color: #777;
     }
     button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
       border-radius: 6px;
-      background: #444;
+      background: var(--highlight-color);
       color: white;
       cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
-    button:hover { background: #666; }
+    button.secondary {
+      background: #444;
+    }
+    button:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+    button.secondary:hover { background: #666; }
+    form input, form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--card-bg-color);
+      color: var(--text-color);
+      border-radius: 8px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
@@ -93,66 +186,120 @@
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header> <section id="home">
+  </header>
+  <section id="home">
     <div class="hero">
       <div>
         <h2>Your Game Title</h2>
-        <p>Describe your game here in a short and exciting way. Mention what makes it unique and fun.</p>
-        <button onclick="goTo('download')">Download</button>
-        <button onclick="goTo('screenshots')">View Screenshots</button>
+        <p>
+          Dive into a thrilling, fast-paced adventure where every decision matters. Master challenging
+          gameplay and explore a world full of unique characters and stories.
+        </p>
+        <div class="buttons">
+          <button onclick="goTo('download')">Download</button>
+          <button class="secondary" onclick="goTo('screenshots')">View Screenshots</button>
+        </div>
       </div>
-      <img src="" alt="Game preview placeholder">
+      <img src="My Game Poster(GreenField infinite).png" alt="Game preview image">
     </div>
-  </section> <section id="about">
+  </section>
+  <section id="about">
     <h2>About the Game</h2>
+    <p>Discover what makes our game stand out from the crowd.</p>
     <div class="cards">
-      <div class="card"><h3>Skill Based</h3><p>Rewarding controls and gameplay.</p></div>
-      <div class="card"><h3>Meaningful Upgrades</h3><p>Choices that impact gameplay.</p></div>
-      <div class="card"><h3>Player Friendly</h3><p>No pay-to-win systems, just fun.</p></div>
+      <div class="card">
+        <h3>Skill Based</h3>
+        <p>Rewarding controls and a high skill ceiling ensure true mastery is within reach for dedicated players.</p>
+      </div>
+      <div class="card">
+        <h3>Meaningful Upgrades</h3>
+        <p>Unlock powerful new abilities and make choices that fundamentally change your gameplay experience.</p>
+      </div>
+      <div class="card">
+        <h3>Player Friendly</h3>
+        <p>Enjoy a fair and balanced experience with no pay-to-win mechanics—just pure, unadulterated fun.</p>
+      </div>
     </div>
-  </section> <section id="screenshots">
+  </section>
+  <section id="screenshots">
     <h2>Screenshots</h2>
     <div class="gallery">
-      <div>Image 1</div>
-      <div>Image 2</div>
-      <div>Image 3</div>
-      <div>Image 4</div>
-      <div>Image 5</div>
-      <div>Image 6</div>
+      <img src="My Game Poster(GreenField infinite).png" alt="Screenshot 1">
+      <img src="My Game Poster(GreenField infinite).png" alt="Screenshot 2">
+      <img src="My Game Poster(GreenField infinite).png" alt="Screenshot 3">
+      <img src="My Game Poster(GreenField infinite).png" alt="Screenshot 4">
+      <img src="My Game Poster(GreenField infinite).png" alt="Screenshot 5">
+      <img src="My Game Poster(GreenField infinite).png" alt="Screenshot 6">
     </div>
-  </section> <section id="devlog">
+  </section>
+  <section id="devlog">
     <h2>Devlog</h2>
+    <p>Follow our journey with the latest development updates.</p>
     <div class="cards">
-      <div class="card"><h3>v0.1.0 — First Build</h3><p>Initial release with core features.</p></div>
-      <div class="card"><h3>v0.2.0 — Update</h3><p>Added new enemies and balance tweaks.</p></div>
-      <div class="card"><h3>v0.3.0 — Content Drop</h3><p>New level and improved UI design.</p></div>
+      <div class="card">
+        <h3>v0.1.0 — First Build</h3>
+        <p>Initial release with core features and a small playable area. Thank you for your support!</p>
+      </div>
+      <div class="card">
+        <h3>v0.2.0 — Update</h3>
+        <p>Added new enemies, refined weapon balance, and improved overall performance.</p>
+      </div>
+      <div class="card">
+        <h3>v0.3.0 — Content Drop</h3>
+        <p>Introducing a new level, an overhauled UI design, and new visual effects for abilities.</p>
+      </div>
     </div>
-  </section> <section id="download">
+  </section>
+  <section id="download">
     <h2>Download</h2>
+    <p>Choose your platform and start playing now!</p>
     <div class="cards">
-      <div class="card"><h3>Windows</h3><button>Download</button></div>
-      <div class="card"><h3>MacOS</h3><button>Download</button></div>
-      <div class="card"><h3>Linux</h3><button>Download</button></div>
+      <div class="card">
+        <h3>Windows</h3>
+        <button>Download</button>
+      </div>
+      <div class="card">
+        <h3>MacOS</h3>
+        <button>Download</button>
+      </div>
+      <div class="card">
+        <h3>Linux</h3>
+        <button>Download</button>
+      </div>
     </div>
-  </section> <section id="faq">
+  </section>
+  <section id="faq">
     <h2>FAQ</h2>
+    <p>Have questions? Find your answers here.</p>
     <div class="cards">
-      <div class="card"><h3>Is there a roadmap?</h3><p>Yes, check our About section.</p></div>
-      <div class="card"><h3>Minimum Specs?</h3><p>8GB RAM, modern GPU, 2GB disk space.</p></div>
-      <div class="card"><h3>Multiplayer?</h3><p>Planned after 1.0 if demand is high.</p></div>
+      <div class="card">
+        <h3>Is there a roadmap?</h3>
+        <p>Yes, we have a public roadmap. You can view it on our community forum.</p>
+      </div>
+      <div class="card">
+        <h3>Minimum Specs?</h3>
+        <p>For the best experience: 8GB RAM, modern GPU (GTX 1060 or better), and 2GB disk space.</p>
+      </div>
+      <div class="card">
+        <h3>Multiplayer?</h3>
+        <p>Multiplayer is planned for a future update after the 1.0 release if there is high player demand.</p>
+      </div>
     </div>
-  </section> <section id="contact">
+  </section>
+  <section id="contact">
     <h2>Contact</h2>
+    <p>Get in touch with us directly!</p>
     <form>
-      <input type="text" placeholder="Your Email" style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" placeholder="Subject" style="width:100%; padding:10px; margin-bottom:10px;">
-      <textarea placeholder="Message" style="width:100%; padding:10px; height:100px;"></textarea>
-      <br><br>
+      <input type="text" placeholder="Your Email">
+      <input type="text" placeholder="Subject">
+      <textarea placeholder="Message"></textarea>
       <button type="submit">Send</button>
     </form>
-  </section> <footer>
+  </section>
+  <footer>
     <p>© 2025 Your Studio — All rights reserved.</p>
-  </footer> <script>
+  </footer>
+  <script>
     function goTo(sectionId) {
       document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
     }
@@ -175,5 +322,6 @@
         }
       });
     });
-  </script></body>
+  </script>
+</body>
 </html>
